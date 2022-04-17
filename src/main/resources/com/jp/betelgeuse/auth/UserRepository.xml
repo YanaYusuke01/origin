@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jp.betelgeuse.auth.UserRepository">
+	<insert id="registUser" parameterType="com.jp.betelgeuse.auth.User">
+		<![CDATA[
+			INSERT INTO `betelgeuse`.`t_members`(
+				`name_sei`,
+				`name_mei`,
+				`kana_sei`,
+				`kana_mei`,
+				`sex`,
+				`age`,
+				`birthday`,
+				`tel`,
+				`mail`,
+				`address`,
+				`password`,
+				`limit_day`,
+				`create_user`,
+				`create_date`
+			)VALUES(
+				#{name_sei},
+				#{name_mei},
+				#{kana_sei},
+				#{kana_mei},
+				#{sex},
+				#{age},
+				#{birthday},
+				#{tel},
+				#{mail},
+				#{address},
+				#{password},
+				'2023/02/01',
+				'システム管理者',
+				now()
+				)
+		]]>
+	</insert>
+
+    <select id="identifyUser" parameterType="java.lang.String" resultMap="userDetails">
+        <![CDATA[
+			SELECT
+				me.member_id,
+				ma.auth_id,
+				au.auth_name,
+				me.name_sei,
+				me.name_mei,
+				me.kana_sei,
+				me.kana_mei,
+				me.sex,
+				me.age,
+				me.birthday,
+				me.tel,
+				me.mail,
+				me.address,
+				me.password,
+				me.limit_day,
+				me.secret_cd,
+				me.cold_flg,
+				me.limit_flg,
+				me.delete_flg
+			FROM
+				t_members as me
+			INNER JOIN t_member_auth as ma ON me.member_id = ma.member_id
+			INNER JOIN m_auth as au ON ma.auth_id = au.auth_id
+			WHERE
+				mail = #{mail}
+        ]]>
+    </select>
+
+	<resultMap type="com.jp.betelgeuse.auth.User" id="userDetails">
+		<result property="member_id" column="member_id"></result>
+		<result property="name_sei" column="name_sei"></result>
+		<result property="name_mei" column="name_mei"></result>
+		<result property="kana_sei" column="kana_sei"></result>
+		<result property="kana_mei" column="kana_mei"></result>
+		<result property="sex" column="sex"></result>
+		<result property="age" column="age"></result>
+		<result property="birthday" column="birthday"></result>
+		<result property="tel" column="tel"></result>
+		<result property="mail" column="mail"></result>
+		<result property="address" column="address"></result>
+		<result property="password" column="password"></result>
+		<result property="limit_day" column="limit_day"></result>
+		<result property="secret_cd" column="secret_cd"></result>
+		<result property="cold_flg" column="cold_flg"></result>
+		<result property="limit_flg" column="limit_flg"></result>
+		<result property="delete_flg" column="delete_flg"></result>
+		<collection property="auth_id" ofType="java.lang.String">
+			<result column="auth_id"/>
+		</collection>
+		<collection property="auth_name" ofType="java.lang.String">
+			<result column="auth_name"/>
+		</collection>
+	</resultMap>
+</mapper>

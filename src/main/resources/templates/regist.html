@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="jp" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>会員登録 | ユーズドカー.jp</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet.css}">
+</head>
+<body>
+	<header>
+		<div>
+			<h1>会員登録</h1>
+		</div>
+	</header>
+    <main>
+		<div class="form_area">
+			<form th:action="@{/regist}" method="post">
+				<div class="name_input_kanji">
+					<p>氏名</p>
+					<input type="text" name="name_sei" placeholder="姓">
+					<input type="text" name="name_mei" placeholder="名">
+				</div>
+				<div class="name_input_kana">
+					<p>ふりがな</p>
+					<input type="text" name="kana_sei" placeholder="かな_姓">
+					<input type="text" name="kana_mei" placeholder="かな_名">
+				</div>
+				<div class="sex_input">
+					<p>性別</p>
+					<input type="radio" id="radio_men" name="sex" value="男"><label for="radio_men">男</label>
+					<input type="radio" id="radio_women" name="sex" value="女"><label for="radio_women">女</label>
+				</div>
+				<div class="age_input">
+					<p>年齢</p>
+					<input type="text" name="age"><p>歳</p>
+				</div>
+				<div class="birthday_input">
+					<p>生年月日</p>
+					<input type="text" name="birthday_year"><p>年</p>
+					<input type="text" name="birthday_month"><p>月</p>
+					<input type="text" name="birthday_day"><p>日</p>
+				</div>
+				<div class="tel_input">
+					<p>電話番号</p>
+					<input type="text" name="tel_1"><p>-</p>
+					<input type="text" name="tel_2"><p>-</p>
+					<input type="text" name="tel_3">
+				</div>
+				<div class="mail_input">
+					<p>メールアドレス</p>
+					<input type="email" name="mail">
+				</div>
+				<div class="address_input">
+					<p>住所</p>
+					<input type="text" name="address">
+				</div>
+				<div class="password_input">
+					<p>パスワード</p>
+					<input type="password" name="password">
+				</div>
+				<div class="flex_center">
+					<input type="submit" value="登録" style="text-align: center;">
+				</div>
+			</form>
+		</div>
+	</main>
+	<footer>
+		<div>
+			<p style="text-align: center;">&copy;2022 betelgeuse Inc. All Rights Reserved.</p>
+		</div>
+	</footer>
+</body>
+</html>

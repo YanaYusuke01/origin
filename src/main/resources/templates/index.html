@@ -1,10 +1,54 @@
 <!DOCTYPE html>
 <html lang="jp" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>test betelgeuse</title>
+	<meta charset="UTF-8">
+	<title>ホーム | ユーズドカー.jp</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/stylesheet.css}">
 </head>
 <body>
-    <h1>test betelgeuse</h1>
+	<header>
+		<div>
+			<ul class="link_list menu">
+				<li class="menu_item">中古車</li>
+				<li class="menu_item">輸入車</li>
+				<li class="menu_item">新着一覧</li>
+				<li class="menu_item">人気ランキング</li>
+				<li class="menu_item">ブログ</li>
+				<li class="menu_item">関連サービス</li>
+				<li class="menu_item">使い方</li>
+				<li class="menu_item">サイトマップ</li>
+				<li class="menu_item"><a class="none" th:href=@{/login}>ログイン</a></li>
+			</ul>
+		</div>
+	</header>
+	<main style="height: 50rem;">
+		<div class="top_contents bg_image">
+			<div class="site_title">
+				<p class="site_title_item">まだ見ぬ車とあなたとの出会いを</p>
+				<h1 class="site_title_item">ユーズドカー.jp</h1>
+			</div>
+			<div class="serch_area">
+				<form method="post" autocomplete="off" th:action="@{/login}">
+					<input type="hidden">
+				</form>
+				<ul class="link_list btn_list">
+					<li><a class="" th:href="@{/search_maker}"><input type="button" id="search_mk_cn" class="search_list_btn" value="メーカー・車名"></a></li>
+					<li><a class="" th:href="@{/search_pref_area}"><input type="button" id="search_pf_area" class="search_list_btn" value="エリア"></a></li>
+					<li><a class="" th:href="@{/search_price}"><input type="button" id="search_price" class="search_list_btn" value="価格"></a></li>
+					<li><input type="submit" class="search_list_btn" value="この条件で検索する"></li>
+				</ul>
+			</div>
+		</div>
+		<div class="second_contents new_cars"></div>
+		<div class="third_contents popular_ranking"></div>
+		<div class="fourth_contents blogs"></div>
+		<div class="fifth_contents related_services"></div>
+		<div class="sixth_contents buying_flow"></div>
+	</main>
+   	<footer>
+   		<div>
+			<p style="text-align: center;">&copy;2022 betelgeuse Inc. All Rights Reserved.</p>
+		</div>
+   	</footer>
 </body>
 </html>
